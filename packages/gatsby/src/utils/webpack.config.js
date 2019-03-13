@@ -129,13 +129,14 @@ module.exports = async (
             : `/`,
         }
       case `build-javascript`:
+        const publicAssetsPath = process.env.GATSBY_ASSETS_BUILD_DIR ? `${process.env.GATSBY_ASSETS_BUILD_DIR}/` : ``
         return {
           filename: `[name]-[contenthash].js`,
           chunkFilename: `[name]-[contenthash].js`,
-          path: publicPath(``, directory),
+          path: publicAssetsPath(``, directory),
           publicPath: program.prefixPaths
-            ? `${store.getState().config.pathPrefix}/`
-            : `/`,
+            ? `${store.getState().config.pathPrefix}/${publicAssetsPath}`
+            : `/${publicAssetsPath}`,
         }
       default:
         throw new Error(`The state requested ${stage} doesn't exist.`)
@@ -332,6 +333,7 @@ module.exports = async (
         "create-react-context": cachePath(`create-react-context.js`, directory),
         "gatsby-cache-dir": cachePath(``, directory),
         "gatsby-public-dir": publicPath(``, directory),
+        "gatsby-assets-dir": publicAssetsPath(``, directory),
       },
     }
   }

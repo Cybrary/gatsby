@@ -42,6 +42,24 @@ function publicPath(filePath, cwd) {
   return path.join(getPublicPath(cwd), filePath)
 }
 
+function getPublicAssetsPath(cwd) {
+  const { GATSBY_ASSETS_BUILD_DIR } = process.env;
+  if (GATSBY_ASSETS_BUILD_DIR) {
+    if (path.isAbsolute(GATSBY_ASSETS_BUILD_DIR)) {
+      return GATSBY_ASSETS_BUILD_DIR
+    }
+    return path.join(getPublicPath(cwd), GATSBY_ASSETS_BUILD_DIR)
+  }
+  return path.join(getPublicPath(cwd), `./assets`)
+}
+
+function publicAssetsPath(filePath, cwd) {
+  if (!filePath) {
+    return getPublicAssetsPath(cwd)
+  }
+  return path.join(getPublicAssetsPath(cwd), filePath)
+}
+
 class Cache {
   constructor({ name = `db`, store = fsStore } = {}) {
     this.name = name

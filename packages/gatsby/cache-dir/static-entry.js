@@ -13,9 +13,9 @@ const { version: gatsbyVersion } = require(`gatsby/package.json`)
 const pagesObjectMap = new Map()
 pages.forEach(p => pagesObjectMap.set(p.path, p))
 
-const stats = require(`gatsby-public-dir/webpack.stats.json`)
+const stats = require(`gatsby-assets-dir/webpack.stats.json`)
 
-const chunkMapping = require(`gatsby-public-dir/chunk-map.json`)
+const chunkMapping = require(`gatsby-assets-dir/chunk-map.json`)
 
 // const testRequireError = require("./test-require-error")
 // For some extremely mysterious reason, webpack adds the above module *after*
@@ -111,7 +111,7 @@ export default (pagePath, callback) => {
   if (page.jsonName in dataPaths) {
     const pathToJsonData = `../public/` + dataPaths[page.jsonName]
     try {
-      dataAndContext = require(`gatsby-public-dir/static/d/${
+      dataAndContext = require(`gatsby-assets-dir/static/d/${
         dataPaths[page.jsonName]
       }.json`)
     } catch (e) {
@@ -305,7 +305,7 @@ export default (pagePath, callback) => {
             data-href={`${__PATH_PREFIX__}/${style.name}`}
             dangerouslySetInnerHTML={{
               __html: fs.readFileSync(
-                require.resolve(`gatsby-public-dir/${style.name}`),
+                require.resolve(`gatsby-assets-dir/${style.name}`),
                 `utf-8`
               ),
             }}
