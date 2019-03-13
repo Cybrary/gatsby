@@ -12,7 +12,7 @@ const report = require(`gatsby-cli/lib/reporter`)
 const apiRunnerNode = require(`./api-runner-node`)
 const createUtils = require(`./webpack-utils`)
 const hasLocalEslint = require(`./local-eslint-config-finder`)
-const { cachePath, publicPath } = require(`./cache`)
+const { cachePath, publicPath, publicAssetsPath } = require(`./cache`)
 
 // Four stages or modes:
 //   1) develop: for `gatsby develop` command, hot reload and CSS injection into page
@@ -98,6 +98,9 @@ module.exports = async (
 
   debug(`Loading webpack config for stage "${stage}"`)
   function getOutput() {
+    const publicAssetsPath = process.env.GATSBY_ASSETS_BUILD_DIR
+      ? `${process.env.GATSBY_ASSETS_BUILD_DIR}/`
+      : ``
     switch (stage) {
       case `develop`:
         return {
@@ -129,7 +132,6 @@ module.exports = async (
             : `/`,
         }
       case `build-javascript`:
-        const publicAssetsPath = process.env.GATSBY_ASSETS_BUILD_DIR ? `${process.env.GATSBY_ASSETS_BUILD_DIR}/` : ``
         return {
           filename: `[name]-[contenthash].js`,
           chunkFilename: `[name]-[contenthash].js`,

@@ -43,7 +43,7 @@ function publicPath(filePath, cwd) {
 }
 
 function getPublicAssetsPath(cwd) {
-  const { GATSBY_ASSETS_BUILD_DIR } = process.env;
+  const { GATSBY_ASSETS_BUILD_DIR } = process.env
   if (GATSBY_ASSETS_BUILD_DIR) {
     if (path.isAbsolute(GATSBY_ASSETS_BUILD_DIR)) {
       return GATSBY_ASSETS_BUILD_DIR
@@ -124,3 +124,4 @@ class Cache {
 module.exports = Cache
 module.exports.cachePath = cachePath
 module.exports.publicPath = publicPath
+module.exports.publicAssetsPath = publicAssetsPath
