@@ -98,7 +98,7 @@ module.exports = async (
 
   debug(`Loading webpack config for stage "${stage}"`)
   function getOutput() {
-    const publicAssetsPath = process.env.GATSBY_ASSETS_BUILD_DIR
+    const assetsPath = process.env.GATSBY_ASSETS_BUILD_DIR
       ? `${process.env.GATSBY_ASSETS_BUILD_DIR}/`
       : ``
     switch (stage) {

@@ -27,7 +27,7 @@ const readStats = cache => {
     return s
   } else {
     s = JSON.parse(
-      fs.readFileSync(cache.publicPath(`webpack.stats.json`, `utf-8`))
+      fs.readFileSync(cache.assetsPath(`webpack.stats.json`, `utf-8`))
     )
     return s
   }

@@ -111,7 +111,7 @@ export default (pagePath, callback) => {
   if (page.jsonName in dataPaths) {
     const pathToJsonData = `../public/` + dataPaths[page.jsonName]
     try {
-      dataAndContext = require(`gatsby-assets-dir/static/d/${
+      dataAndContext = require(`gatsby-public-dir/static/d/${
         dataPaths[page.jsonName]
       }.json`)
     } catch (e) {
@@ -238,7 +238,7 @@ export default (pagePath, callback) => {
   const styles = scriptsAndStyles.filter(
     style => style.name && style.name.endsWith(`.css`)
   )
-
+  
   apiRunner(`onRenderBody`, {
     setHeadComponents,
     setHtmlAttributes,

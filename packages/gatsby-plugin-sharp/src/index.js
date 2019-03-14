@@ -129,6 +129,7 @@ const healOptions = (
 
 function getPublicPath(cache, file, argsDigestShort) {
   const filePath = path.join(
+    `js`,
     `static`,
     file.internal.contentDigest,
     argsDigestShort

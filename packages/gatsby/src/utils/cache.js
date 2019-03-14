@@ -60,6 +60,10 @@ function publicAssetsPath(filePath, cwd) {
   return path.join(getPublicAssetsPath(cwd), filePath)
 }
 
+function assetsFolder() {
+    return process.env.GATSBY_ASSETS_BUILD_DIR || 'assets'
+}
+
 class Cache {
   constructor({ name = `db`, store = fsStore } = {}) {
     this.name = name
@@ -125,3 +129,4 @@ module.exports = Cache
 module.exports.cachePath = cachePath
 module.exports.publicPath = publicPath
 module.exports.publicAssetsPath = publicAssetsPath
+module.exports.assetsFolder = assetsFolder

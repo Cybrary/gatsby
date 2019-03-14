@@ -1,5 +1,5 @@
 const fs = require(`fs-extra`)
-const { publicPath } = require(`./cache`)
+const { publicPath, publicAssetsPath, assetsFolder } = require(`./cache`)
 
 class GatsbyWebpackStatsExtractor {
   constructor(options) {
@@ -14,8 +14,10 @@ class GatsbyWebpackStatsExtractor {
         if (chunkGroup.name) {
           let files = []
           for (let chunk of chunkGroup.chunks) {
+
             files.push(...chunk.files)
           }
+           console.log(files);
           assets[chunkGroup.name] = files.filter(f => f.slice(-4) !== `.map`)
           assetsMap[chunkGroup.name] = files
             .filter(
@@ -23,7 +25,7 @@ class GatsbyWebpackStatsExtractor {
                 f.slice(-4) !== `.map` &&
                 f.slice(0, chunkGroup.name.length) === chunkGroup.name
             )
-            .map(filename => `/${filename}`)
+            .map(filename => `/` + assetsFolder() + `/${filename}`)
         }
       }
       const webpackStats = {
@@ -31,11 +33,11 @@ class GatsbyWebpackStatsExtractor {
         assetsByChunkName: assets,
       }
       fs.writeFile(
-        publicPath(`chunk-map.json`),
+        publicAssetsPath(`chunk-map.json`),
         JSON.stringify(assetsMap),
         () => {
           fs.writeFile(
-            publicPath(`webpack.stats.json`),
+            publicAssetsPath(`webpack.stats.json`),
             JSON.stringify(webpackStats),
             done
           )
