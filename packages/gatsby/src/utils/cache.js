@@ -61,7 +61,7 @@ function publicAssetsPath(filePath, cwd) {
 }
 
 function assetsFolder() {
-    return process.env.GATSBY_ASSETS_BUILD_DIR || 'assets'
+  return process.env.GATSBY_ASSETS_BUILD_DIR || `assets`
 }
 
 class Cache {

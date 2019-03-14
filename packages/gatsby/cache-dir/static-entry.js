@@ -238,7 +238,7 @@ export default (pagePath, callback) => {
   const styles = scriptsAndStyles.filter(
     style => style.name && style.name.endsWith(`.css`)
   )
-  
+
   apiRunner(`onRenderBody`, {
     setHeadComponents,
     setHtmlAttributes,

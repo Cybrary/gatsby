@@ -14,10 +14,9 @@ class GatsbyWebpackStatsExtractor {
         if (chunkGroup.name) {
           let files = []
           for (let chunk of chunkGroup.chunks) {
-
             files.push(...chunk.files)
           }
-           console.log(files);
+          
           assets[chunkGroup.name] = files.filter(f => f.slice(-4) !== `.map`)
           assetsMap[chunkGroup.name] = files
             .filter(
