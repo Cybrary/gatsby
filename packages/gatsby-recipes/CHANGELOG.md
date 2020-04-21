@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.8-alpha.0](https://github.com/gatsbyjs/gatsby/compare/gatsby-recipes@0.0.7...gatsby-recipes@0.0.8-alpha.0) (2020-04-21)
+
+### Features
+
+- **recipes:** Update gatsby-recipes README.md ([#23232](https://github.com/gatsbyjs/gatsby/issues/23232)) ([2c5e3b8](https://github.com/gatsbyjs/gatsby/commit/2c5e3b8))
+
 ## [0.0.7](https://github.com/gatsbyjs/gatsby/compare/gatsby-recipes@0.0.6...gatsby-recipes@0.0.7) (2020-04-17)
 
 **Note:** Version bump only for package gatsby-recipes
