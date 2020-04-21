@@ -170,7 +170,7 @@ export default class GraphQLRunner {
         crypto
           .createHash(`sha1`)
           .update(statsQuery)
-          .update(v8.serialize(context))
+          .update(JSON.stringify(context))
           .digest(`hex`)
       )
 
